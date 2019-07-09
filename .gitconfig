@@ -1,0 +1,27 @@
+[user]
+	email = rafobmini2@hotmail.com
+	name = Rafael Rubbioli
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	lg = log --graph
+	st = status -s
+	cm = commit -m
+	rh = reset --hard
+	rb = rebase
+	rbd = rebase ss/development
+	ru = remote update ss
+	amend = commit -v -a --no-edit --amend
+	po = push origin 
+
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = 'subl' --wait
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+  insteadOf = https://gitlab.com/
+[url "ssh://git@bitbucket.org/"]
+  insteadOf = https://bitbucket.org/
