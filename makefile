@@ -14,24 +14,21 @@ deps:
 		terminator htop python3-pip
 
 zsh:
-	@echo "oh-my-zsh, https://github.com/robbyrussell/oh-my-zsh"
-	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	@echo "zsh autosuggestions"
-	@git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-	@echo "you need to logout and login again to finish installing zsh"
+	@echo "ZSH"
+	@if ! which zsh > /dev/null; then \
+		echo "oh-my-zsh, https://github.com/robbyrussell/oh-my-zsh"; \
+		sh -c "$$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"; \
+		echo "you should logout and login again"; \
+	fi
+	@if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then \
+		echo "zsh autosuggestions"; \
+		git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; \
+	fi
 
 docker:
-	@xdg-open "https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository"
+	@sh -c "$$(curl -fsSL https://get.docker.com)"
 
 links:
-	@if [ ! -L "~/.zshrc" ]; then \
-		echo "~/.zshrc"; \
-		rm -f ~/.zshrc; \
-		ln -s ${PWD}/.zshrc ~/.zshrc; \
-	fi
-	@if [ ! -L "~/.gitconfig" ]; then \
-		echo "~/.gitconfig"; \
-		rm -f ~/.gitconfig; \
-		ln -s ${PWD}/.gitconfig ~/.gitconfig; \
-	fi
+	@ln -sf ${PWD}/.zshrc ~/.zshrc
+	@ln -sf ${PWD}/.gitconfig ~/.gitconfig
 	
