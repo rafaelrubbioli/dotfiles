@@ -1,5 +1,5 @@
 default:
-	@echo "go, deps, zsh, docker, links	"
+	@echo "go, deps, zsh, docker, links"
 
 go:
 	@sudo rm -rf /usr/local/go && curl --silent https://golang.org/dl/ 2>&1 |\
@@ -10,7 +10,7 @@ go:
 deps:
 	@echo "Installing Dependencies"
 	@sudo apt update && sudo apt install \
-		curl git bison gcc make zsh silversearcher-ag autojump aria2 xsel \
+		curl git bison make zsh silversearcher-ag aria2 \
 		terminator htop python3-pip
 
 zsh:
@@ -24,14 +24,14 @@ docker:
 	@xdg-open "https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository"
 
 links:
-	@if [ ! -L "../.zshrc" ]; then \
+	@if [ ! -L "~/.zshrc" ]; then \
 		echo "~/.zshrc"; \
-		rm -f ../.zshrc; \
-		ln -s ${PWD}/zshrc ~/.zshrc; \
+		rm -f ~/.zshrc; \
+		ln -s ${PWD}/.zshrc ~/.zshrc; \
 	fi
-	@if [ ! -L "../.gitconfig" ]; then \
+	@if [ ! -L "~/.gitconfig" ]; then \
 		echo "~/.gitconfig"; \
-		rm -f ../.gitconfig; \
-		ln -s ${PWD}/gitconfig ~/.gitconfig; \
+		rm -f ~/.gitconfig; \
+		ln -s ${PWD}/.gitconfig ~/.gitconfig; \
 	fi
 	
