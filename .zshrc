@@ -1,7 +1,7 @@
 export ZSH="/home/$USER/.oh-my-zsh"
 
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="kuaty"
 
 plugins=(
   git
@@ -12,11 +12,13 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-alias zshconfig="code ~/.zshrc"
-
 export PATH=$PATH:/usr/local/go/bin:/home/rafaelrubbioli/bin:/home/rafaelrubbioli/go/bin
 
 export TMPDIR=/tmp
+
+alias zource="source ~/.zshrc"
+alias zshconfig="code ~/.zshrc"
+alias gsync="git remote update upstream && git rebase upstream/$(git_current_branch)"
 
 qq() {
     clear
@@ -43,6 +45,4 @@ ggpf () {
 	fi
 }
 
-# SS
-
-export GOPRIVATE=github.com/StudioSol/*
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

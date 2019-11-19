@@ -24,6 +24,7 @@ zsh:
 		echo "zsh autosuggestions"; \
 		git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; \
 	fi
+	@cd ~/.oh-my-zsh/themes && curl https://gist.githubusercontent.com/rafaelrubbioli/e2f65c243865a06adfce59e7545c9291/raw/d1aea9589590acd909f6f0d20a6837261d79d403/kuaty.zsh-theme > kuaty.zsh-theme
 
 docker:
 	@sh -c "$$(curl -fsSL https://get.docker.com)"

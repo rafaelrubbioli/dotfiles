@@ -10,14 +10,14 @@
 	cm = commit -m
 	rh = reset --hard
 	rb = rebase
-	rbd = rebase ss/development
-	ru = remote update ss
+	ru = remote update
 	amend = commit -v -a --no-edit --amend
 	po = push origin 
 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = 'subl' --wait
+	excludesfile = /home/rafaelrubbioli/.gitignore
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
