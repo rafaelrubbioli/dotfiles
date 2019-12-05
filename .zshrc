@@ -19,6 +19,9 @@ export TMPDIR=/tmp
 alias zource="source ~/.zshrc"
 alias zshconfig="code ~/.zshrc"
 alias gsync="git remote update upstream && git rebase upstream/$(git_current_branch)"
+alias kpods="kubectl get pods | grep"
+alias kjobs="kubectl get jobs | grep"
+alias kcron="kubectl get cronjobs | grep"
 
 qq() {
     clear
@@ -35,6 +38,7 @@ rmqq() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# git push force current branch to origin
 ggpf () {
 	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]
 	then
@@ -46,3 +50,19 @@ ggpf () {
 }
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# See what is running on ports
+whoseport () {
+    lsof -i ":$1" | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} LISTEN
+}
+
+# Change Kubernetes namespace
+kns() {
+    namespace=$1
+    if [ -z $namespace ]; then
+        echo "Please, provide the namespace name: 'change-ns mywebapp'"
+        return 1
+    fi
+
+    kubectl config set-context $(kubectl config current-context) --namespace $namespace
+}
