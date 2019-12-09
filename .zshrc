@@ -22,6 +22,7 @@ alias gsync="git remote update upstream && git rebase upstream/$(git_current_bra
 alias kpods="kubectl get pods | grep"
 alias kjobs="kubectl get jobs | grep"
 alias kcron="kubectl get cronjobs | grep"
+alias kl="k logs -f"
 
 qq() {
     clear
