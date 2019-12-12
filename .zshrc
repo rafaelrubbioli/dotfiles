@@ -19,10 +19,6 @@ export TMPDIR=/tmp
 alias zource="source ~/.zshrc"
 alias zshconfig="code ~/.zshrc"
 alias gsync="git remote update upstream && git rebase upstream/$(git_current_branch)"
-alias kpods="kubectl get pods | grep"
-alias kjobs="kubectl get jobs | grep"
-alias kcron="kubectl get cronjobs | grep"
-alias kl="k logs -f"
 
 qq() {
     clear
@@ -57,7 +53,13 @@ whoseport () {
     lsof -i ":$1" | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} LISTEN
 }
 
-# Change Kubernetes namespace
+# K8S
+alias kpods="kubectl get pods | grep"
+alias kjobs="kubectl get jobs | grep"
+alias kcron="kubectl get cronjobs | grep"
+alias kl="kubectl logs -f"
+alias kpf="kubectl port-forward"
+# Change namespace
 kns() {
     namespace=$1
     if [ -z $namespace ]; then
