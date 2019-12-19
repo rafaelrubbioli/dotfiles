@@ -54,12 +54,65 @@ whoseport () {
 }
 
 # K8S
-alias kpods="kubectl get pods | grep"
-alias kjobs="kubectl get jobs | grep"
-alias kcron="kubectl get cronjobs | grep"
-alias kservices="kubectl get services | grep"
-alias ksvcs="kubectl get services | grep"
-alias kdeployments="kubectl get deployments | grep"
+kpods() {
+    pod=$1
+    if [ -z $pod ]; then
+        kubectl get pods
+        return 0
+    fi
+
+    kubectl get pods | grep $pod
+}
+
+kjobs() {
+    job=$1
+    if [ -z $job ]; then
+        kubectl get jobs
+        return 0
+    fi
+
+    kubectl get jobs | grep $job
+}
+
+kcronjobs() {
+    cronjob=$1
+    if [ -z $cronjob ]; then
+        kubectl get cronjobs
+        return 0
+    fi
+
+    kubectl get cronjobs | grep $cronjob
+}
+
+kservices() {
+    service=$1
+    if [ -z $service ]; then
+        kubectl get services
+        return 0
+    fi
+
+    kubectl get services | grep $service
+}
+
+ksvcs() {
+    service=$1
+    if [ -z $service ]; then
+        kubectl get services
+        return 0
+    fi
+
+    kubectl get services | grep $service
+}
+
+kdeployments() {
+    deployment=$1
+    if [ -z $deployment ]; then
+        kubectl get deployment
+        return 0
+    fi
+
+    kubectl get deployments | grep $deployment
+}
 
 alias kpod="kubectl describe pod"
 alias kdeploy="kubectl describe deploy"
@@ -74,7 +127,8 @@ alias kpf="kubectl port-forward"
 kns() {
     namespace=$1
     if [ -z $namespace ]; then
-        echo "Please, provide the namespace name: 'change-ns mywebapp'"
+        echo "Please, provide the namespace name: 'kns [namespace]'"
+        kubectl get namespaces
         return 1
     fi
 
