@@ -57,8 +57,19 @@ whoseport () {
 alias kpods="kubectl get pods | grep"
 alias kjobs="kubectl get jobs | grep"
 alias kcron="kubectl get cronjobs | grep"
+alias kservices="kubectl get services | grep"
+alias ksvcs="kubectl get services | grep"
+alias kdeployments="kubectl get deployments | grep"
+
+alias kpod="kubectl describe pod"
+alias kdeploy="kubectl describe deploy"
+alias kservice="kubectl describe service"
+alias ksvc="kubectl describe service"
+
 alias kl="kubectl logs -f"
+
 alias kpf="kubectl port-forward"
+
 # Change namespace
 kns() {
     namespace=$1
