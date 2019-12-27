@@ -34,4 +34,5 @@ links:
 	@ln -sf ${PWD}/.gitconfig ~/.gitconfig
 
 editor:
-	cat /usr/share/applications/defaults.list | ag gedit.desktop | sed -e 's/=.*gedit.desktop/=code.desktop/g' > ~/.local/share/applications/mimeapps.list
+	echo "[Default Applications]" > ~/.local/share/applications/mimeapps.list
+	cat /usr/share/applications/defaults.list | ag gedit.desktop | sed -e 's/=.*gedit.desktop/=code.desktop/g' >> ~/.local/share/applications/mimeapps.list
