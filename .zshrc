@@ -41,7 +41,7 @@ ggpf () {
 	then
 		git push origin "${*}" -f
 	else
-		[[ "$#" == 0 ]] && local b="$(git_current_branch)" 
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
 		git push origin "${b:=$1}" -f
 	fi
 }

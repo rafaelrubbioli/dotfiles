@@ -1,5 +1,5 @@
 default:
-	@echo "go, deps, zsh, docker, links"
+	@echo "go, deps, zsh, docker, links, editor"
 
 go:
 	@sudo rm -rf /usr/local/go && curl --silent https://golang.org/dl/ 2>&1 |\
@@ -32,4 +32,6 @@ docker:
 links:
 	@ln -sf ${PWD}/.zshrc ~/.zshrc
 	@ln -sf ${PWD}/.gitconfig ~/.gitconfig
-	
+
+editor:
+	cat /usr/share/applications/defaults.list | ag gedit.desktop | sed -e 's/=.*gedit.desktop/=code.desktop/g' > ~/.local/share/applications/mimeapps.list
