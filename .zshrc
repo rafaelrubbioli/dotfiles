@@ -117,11 +117,15 @@ kdeployments() {
 alias kpod="kubectl describe pod"
 alias kdeploy="kubectl describe deploy"
 alias kservice="kubectl describe service"
+alias kjob="kubectl describe job"
+alias kcronjob="kubectl describe cronjob"
 alias ksvc="kubectl describe service"
 
 alias kl="kubectl logs -f"
 
 alias kpf="kubectl port-forward"
+
+alias kcontext='context=$(kubectl config get-contexts -o name | fzf); kubectl config use-context $context'
 
 # Change namespace
 kns() {
