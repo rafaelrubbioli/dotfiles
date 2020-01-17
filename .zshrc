@@ -122,10 +122,16 @@ alias kcronjob="kubectl describe cronjob"
 alias ksvc="kubectl describe service"
 
 alias kl="kubectl logs -f"
+kll() {
+    name=$1
+    kubectl get pods | grep $name | awk '{print $1}' | xargs -I {} kubectl logs -f {}
+}
 
 alias kpf="kubectl port-forward"
 
 alias kcontext='context=$(kubectl config get-contexts -o name | fzf); kubectl config use-context $context'
+
+alias kubesh='pod=$(kubectl get pods -o custom-columns=":metadata.name" --no-headers | fzf); kubectl exec -ti $pod bash || kubectl exec -ti $pod sh'
 
 # Change namespace
 kns() {
