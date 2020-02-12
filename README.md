@@ -9,3 +9,5 @@ https://github.com/robbyrussell/oh-my-zsh
 
 
 https://github.com/github/hub
+
+https://starship.rs/config/
