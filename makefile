@@ -12,6 +12,7 @@ deps:
 	@sudo apt update && sudo apt install \
 		curl git bison make zsh silversearcher-ag aria2 \
 		terminator htop python3-pip
+	@curl -fsSL https://starship.rs/install.sh | bash
 
 zsh:
 	@echo "ZSH"
