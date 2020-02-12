@@ -2,10 +2,6 @@ prompt_order = [
     "username",
     "hostname",
     "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
     "hg_branch",
     "package",
     "dotnet",
@@ -27,6 +23,10 @@ prompt_order = [
     "crystal",
     "cmd_duration",
     "kubernetes",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
     "line_break",
     "jobs",
     "battery",
@@ -42,3 +42,6 @@ symbol = "➜"     # The "symbol" segment is being set to "➜"
 symbol = "⛵ "
 style = "purple"
 disabled = false
+
+[golang]
+symbol = "Go "
