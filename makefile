@@ -1,5 +1,5 @@
 default:
-	@echo "go, deps, zsh, docker, links, editor"
+	@echo "go, deps, zsh, docker, links, editor, k8s"
 
 go:
 	@sudo rm -rf /usr/local/go && curl --silent https://golang.org/dl/ 2>&1 |\
@@ -9,10 +9,19 @@ go:
 
 deps:
 	@echo "Installing Dependencies"
-	@sudo apt update && sudo apt install \
-		curl git bison make zsh silversearcher-ag aria2 \
-		terminator htop python3-pip
+	@sudo apt update
+	@sudo apt install curl
+	@sudo apt install git
+	@sudo apt install bison
+	@sudo apt install make
+	@sudo apt install zsh
+	@sudo apt install silversearcher-ag
+	@sudo apt install aria2
+	@sudo apt install htop
+	@sudo apt install python3-pip
 	@curl -fsSL https://starship.rs/install.sh | bash
+	@curl "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" > /usr/bin/diff-so-fancy
+	@sudo chmod +x /usr/bin/diff-so-fancy
 
 zsh:
 	@echo "ZSH"
@@ -38,3 +47,10 @@ links:
 editor:
 	echo "[Default Applications]" > ~/.local/share/applications/mimeapps.list
 	cat /usr/share/applications/defaults.list | ag gedit.desktop | sed -e 's/=.*gedit.desktop/=code.desktop/g' >> ~/.local/share/applications/mimeapps.list
+
+k8s:
+	sudo apt-get update && sudo apt-get install -y apt-transport-https
+	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+	echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+	sudo apt-get update
+	sudo apt-get install -y kubectl
