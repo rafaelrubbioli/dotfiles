@@ -32,6 +32,7 @@ docker:
 links:
 	@ln -sf ${PWD}/.zshrc ~/.zshrc
 	@ln -sf ${PWD}/.gitconfig ~/.gitconfig
+	@ln -sf ${PWD}/.starship ~/.starship
 
 editor:
 	echo "[Default Applications]" > ~/.local/share/applications/mimeapps.list

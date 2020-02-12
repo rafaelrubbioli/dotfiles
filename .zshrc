@@ -144,3 +144,6 @@ kns() {
 
     kubectl config set-context $(kubectl config current-context) --namespace $namespace
 }
+
+export STARSHIP_CONFIG=~/.starship
+eval "$(starship init zsh)"
