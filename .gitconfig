@@ -17,7 +17,7 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = 'subl' --wait
-	excludesfile = /home/rafaelrubbioli/.gitignore
+	excludesfile = /home/rafael/.gitignore
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/

@@ -42,7 +42,9 @@ docker:
 links:
 	@ln -sf ${PWD}/.zshrc ~/.zshrc
 	@ln -sf ${PWD}/.gitconfig ~/.gitconfig
+	@ln -sf ${PWD}/.gitignore ~/.gitignore
 	@ln -sf ${PWD}/.starship ~/.starship
+	git config --global core.excludesfile ~/.gitignore
 
 editor:
 	echo "[Default Applications]" > ~/.local/share/applications/mimeapps.list
