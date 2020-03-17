@@ -12,12 +12,12 @@
 	rb = rebase
 	ru = remote update
 	amend = commit -v -a --no-edit --amend
-	po = push origin 
+	po = push origin
 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	editor = 'subl' --wait
-	excludesfile = /home/rafael/.gitignore
+	excludesfile = ~/.gitignore
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
