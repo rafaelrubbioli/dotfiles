@@ -22,6 +22,7 @@ deps:
 	@curl -fsSL https://starship.rs/install.sh | bash
 	@curl "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" > /usr/bin/diff-so-fancy
 	@sudo chmod +x /usr/bin/diff-so-fancy
+	@sudo apt install fzf
 
 zsh:
 	@echo "ZSH"
