@@ -16,15 +16,26 @@ export PATH=$PATH:/usr/local/go/bin:/home/rafaelrubbioli/bin:/home/rafaelrubbiol
 
 export TMPDIR=/tmp
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+export STARSHIP_CONFIG=~/.starship
+eval "$(starship init zsh)"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# ALIAS AND FUNCTIONS
+
 alias zource="source ~/.zshrc"
 alias zshconfig="code ~/.zshrc"
-alias gsync="git remote update upstream && git rebase upstream/$(git_current_branch)"
 
 qq() {
     clear
     local gpath="${GOPATH:-$HOME/go}"
     "${gpath%%:*}/src/github.com/y0ssar1an/q/q.sh" "$@"
 }
+
 rmqq() {
     if [[ -f "$TMPDIR/q" ]]; then
         rm "$TMPDIR/q"
@@ -32,9 +43,7 @@ rmqq() {
     qq
 }
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+# GIT
 # git push force current branch to origin
 ggpf () {
 	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]
@@ -46,7 +55,23 @@ ggpf () {
 	fi
 }
 
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+# checkout branch with list
+alias gcol='git checkout $(git branch --sort=-committerdate | fzf)'
+
+# fetches latest version of branch
+gsync () {
+    branch=$1
+    if [ -z $branch ]; then
+        branch=$(git_current_branch)
+    fi
+
+    git fetch upstream
+    git reset --hard upstream/$branch
+}
+
+# GH CLI
+# checkout PR with list
+alias ghpr='gh pr list | fzf | awk "{print \$1}" | xargs -I @ gh pr checkout @'
 
 # See what is running on ports
 whoseport () {
@@ -131,7 +156,7 @@ alias kpf="kubectl port-forward"
 
 alias kcontext='context=$(kubectl config get-contexts -o name | fzf); kubectl config use-context $context'
 
-alias kubesh='pod=$(kubectl get pods -o custom-columns=":metadata.name" --no-headers | fzf); kubectl exec -ti $pod bash || kubectl exec -ti $pod sh'
+alias kubesh='pod=$(kubectl get pods -o custom-columns=":metadata.name" --no-headers | fzf); kubectl exec -ti $pod -- bash || kubectl exec -ti $pod -- sh'
 
 # Change namespace
 kns() {
@@ -144,6 +169,3 @@ kns() {
 
     kubectl config set-context $(kubectl config current-context) --namespace $namespace
 }
-
-export STARSHIP_CONFIG=~/.starship
-eval "$(starship init zsh)"
