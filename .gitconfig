@@ -15,7 +15,7 @@
 	po = push origin
 
 [core]
-	editor = 'subl' --wait
+	editor = 'code' --wait
 	excludesfile = /home/rafaelrubbioli/.gitignore
 
 [url "ssh://git@github.com/"]
