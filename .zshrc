@@ -65,8 +65,8 @@ gsync () {
         branch=$(git_current_branch)
     fi
 
-    git fetch upstream
-    git reset --hard upstream/$branch
+    git fetch upstream $branch
+    git rebase upstream/$branch
 }
 
 # GH CLI
@@ -169,3 +169,6 @@ kns() {
 
     kubectl config set-context $(kubectl config current-context) --namespace $namespace
 }
+
+# sudo pip3 install thefuck
+eval $(thefuck --alias)
