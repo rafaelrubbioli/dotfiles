@@ -25,6 +25,10 @@ deps:
 	@sudo apt install fzf
 	@sudo apt install gnome-tweaks
 	@sudo apt install gnome-shell-extensions
+	@curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+	@echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+	@sudo apt update
+	@sudo apt install gh
 
 zsh:
 	@echo "ZSH"
@@ -46,7 +50,7 @@ links:
 	@ln -sf ${PWD}/.zshrc ~/.zshrc
 	@ln -sf ${PWD}/.gitconfig ~/.gitconfig
 	@ln -sf ${PWD}/.gitignore ~/.gitignore
-	@ln -sf ${PWD}/.starship ~/.starship
+	@ln -sf ${PWD}/starship.toml ~/.starship.toml
 	git config --global core.excludesfile ~/.gitignore
 
 editor:
