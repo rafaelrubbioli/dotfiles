@@ -19,7 +19,7 @@ export TMPDIR=/tmp
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-export STARSHIP_CONFIG=~/.starship
+export STARSHIP_CONFIG=starship.toml
 eval "$(starship init zsh)"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -169,6 +169,3 @@ kns() {
 
     kubectl config set-context $(kubectl config current-context) --namespace $namespace
 }
-
-# sudo pip3 install thefuck
-eval $(thefuck --alias)

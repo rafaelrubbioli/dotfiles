@@ -23,6 +23,8 @@ deps:
 	@curl "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy" > /usr/bin/diff-so-fancy
 	@sudo chmod +x /usr/bin/diff-so-fancy
 	@sudo apt install fzf
+	@sudo apt install gnome-tweaks
+	@sudo apt install gnome-shell-extensions
 
 zsh:
 	@echo "ZSH"
