@@ -169,3 +169,14 @@ kns() {
 
     kubectl config set-context $(kubectl config current-context) --namespace $namespace
 }
+
+# Change cluster
+kcc() {
+    cluster=$1
+    if [ -z $cluster ]; then
+        echo "Please, provide the cluster name: 'kcc [cluster]'"
+        return 1
+    fi
+
+    kubectl config use-context $cluster
+}
