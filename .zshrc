@@ -156,19 +156,11 @@ alias kpf="kubectl port-forward"
 
 alias kcontext='context=$(kubectl config get-contexts -o name | fzf); kubectl config use-context $context'
 
+# Exec pod
 alias kubesh='pod=$(kubectl get pods -o custom-columns=":metadata.name" --no-headers | fzf); kubectl exec -ti $pod -- bash || kubectl exec -ti $pod -- sh'
 
 # Change namespace
-kns() {
-    namespace=$1
-    if [ -z $namespace ]; then
-        echo "Please, provide the namespace name: 'kns [namespace]'"
-        kubectl get namespaces
-        return 1
-    fi
-
-    kubectl config set-context $(kubectl config current-context) --namespace $namespace
-}
+alias kns='namespace=$(kubectl get namespaces -o custom-columns=":metadata.name" --no-headers | fzf); kubectl config set-context $(kubectl config current-context) --namespace $namespace'
 
 # Change cluster
 kcc() {
