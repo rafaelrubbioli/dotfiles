@@ -44,6 +44,10 @@ rmqq() {
 }
 
 # GIT
+
+# latest tag 
+alias gtl='git describe --abbrev=0 --tags'
+
 # git push force current branch to origin
 ggpf () {
 	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]
