@@ -55,10 +55,21 @@ ggpf () {
 	fi
 }
 
+# git push current branch to origin with tags
+ggpt () {
+	if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]
+	then
+		git push --tags origin "${*}"
+	else
+		[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+		git push --tags origin "${b:=$1}"
+	fi
+}
+
 # checkout branch with list
 alias gcol='git checkout $(git branch --sort=-committerdate | fzf)'
 
-# fetches latest version of branch
+# fetches latest version of branch and tags
 gsync () {
     branch=$1
     if [ -z $branch ]; then
@@ -67,6 +78,7 @@ gsync () {
 
     git fetch upstream $branch
     git rebase upstream/$branch
+    git pull --tags
 }
 
 # GH CLI
