@@ -82,7 +82,7 @@ gsync () {
 
     git fetch upstream $branch
     git rebase upstream/$branch
-    git pull --tags
+    git pull --tags upstream $branch
 }
 
 # GH CLI
