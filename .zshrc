@@ -73,7 +73,7 @@ ggpt () {
 # checkout branch with list
 alias gcol='git checkout $(git branch --sort=-committerdate | fzf)'
 
-# fetches latest version of branch and tags
+# fetches latest version of branch and resets current branch
 gsync () {
     branch=$1
     if [ -z $branch ]; then
@@ -81,8 +81,18 @@ gsync () {
     fi
 
     git fetch upstream $branch
+    git reset --hard upstream/$branch
+}
+
+# fetches latest version of branch and updates current branch
+grebase () {
+    branch=$1
+    if [ -z $branch ]; then
+        branch=$(git_current_branch)
+    fi
+
+    git fetch upstream $branch
     git rebase upstream/$branch
-    git pull --tags upstream $branch
 }
 
 # GH CLI
