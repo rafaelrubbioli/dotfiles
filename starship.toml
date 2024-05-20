@@ -32,3 +32,6 @@ disabled = false
 
 [golang]
 symbol = "Go "
+
+[git_branch]
+symbol = "⇵ "

@@ -16,7 +16,7 @@
 
 [core]
 	editor = 'code' --wait
-	excludesfile = /home/rafaelrubbioli/.gitignore
+	excludesfile = /Users/rafaelrubbioli/.gitignore
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/

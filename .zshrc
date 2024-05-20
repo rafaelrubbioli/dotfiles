@@ -1,20 +1,24 @@
-export ZSH="/home/$USER/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="kuaty"
 
 plugins=(
   git
+  git-prompt
   wd
   kubectl
   zsh-autosuggestions
+  docker
 )
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/usr/local/go/bin:/home/rafaelrubbioli/bin:/home/rafaelrubbioli/go/bin
+export PATH=$PATH:/usr/local/go/bin:/$HOME/bin:/$HOME/go/bin
 
 export TMPDIR=/tmp
+
+SPACESHIP_PROMPT_ASYNC=false
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
