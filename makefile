@@ -14,6 +14,7 @@ deps:
 	@curl -sS https://starship.rs/install.sh | sh
 	@brew install diff-so-fancy
 	@brew install fzf
+	@brew install kubectl
 	@brew install derailed/k9s/k9s
 
 zsh:
